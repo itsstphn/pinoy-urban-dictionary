@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import "./globals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,6 +7,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import thumbsUp from "../assets/thumbs-up.svg";
 import thumbsDown from "../assets/thumbs-down.svg";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -20,12 +20,14 @@ export default function Home() {
               Know a slang not listed?
             </h2>
           </div>
-          <div className="bg-accent w-fit flex gap-1.5 justify-center items-center py-3 px-4 rounded-[35px]">
-            <div className="w-4">
-              <FontAwesomeIcon icon={faPlus} color="white" />
+          <Link href="/define-word">
+            <div className="bg-accent w-fit flex gap-1.5 justify-center items-center py-3 px-4 rounded-[35px]">
+              <div className="w-4">
+                <FontAwesomeIcon icon={faPlus} color="white" />
+              </div>
+              <p className="text-white text-xs font-bold">Define Word</p>
             </div>
-            <p className="text-white text-xs font-bold">Define Word</p>
-          </div>
+          </Link>
         </div>
 
         <div className="bg-secondary p-5 flex flex-col rounded-[15px]">
