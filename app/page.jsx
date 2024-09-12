@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <main className="container p-3 flex flex-col gap-5">
+      <main className="container md:max-w-[720px] mx-auto p-3 flex flex-col gap-5">
         <div className="bg-primary py-4 flex px-3 justify-around items-center ">
           <div>
             <h2 className="tracking-tight text-white">

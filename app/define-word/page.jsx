@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function DefineWord() {
   return (
-    <main className="container p-3">
-      <form className="bg-secondary p-5">
+    <main className="container md:max-w-[720px] mx-auto p-3">
+      <form className="bg-secondary p-5 md:p-10">
         <h1 className="text-lg font-bold mb-7">Define a word</h1>
         <input
           type="text"
