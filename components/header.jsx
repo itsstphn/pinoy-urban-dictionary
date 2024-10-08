@@ -2,12 +2,19 @@ import { faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/PUD.svg";
 import Image from "next/image";
-import { verifyAuth } from "@/lib/auth";
+import { getUserById } from "@/lib/user";
 import Link from "next/link";
-import AccountMenu from "./accountMenu";
+import AccountMenu from "./AccountMenu";
+import { verifyAuth } from "@/lib/auth";
 
 export default async function Header() {
   const isAuth = await verifyAuth();
+
+  let userDetails = null;
+
+  if (isAuth.session !== null) {
+    userDetails = getUserById(isAuth.user.id);
+  }
 
   return (
     <header className="bg-primary  h-[60px] md:h-[120px]">
@@ -30,10 +37,10 @@ export default async function Header() {
             type="text"
           />
 
-          <div className="w-5 hidden md:block">
+          <div className="w-5 hidden md:block cursor-pointer">
             <FontAwesomeIcon icon={faMagnifyingGlass} color="white" size="lg" />
           </div>
-          <AccountMenu></AccountMenu>
+          <AccountMenu userDetails={userDetails}></AccountMenu>
         </div>
       </div>
     </header>

@@ -42,14 +42,14 @@ export default function Home() {
           <p className="font-bold text-sm mb-5">John Doe</p>
           <div className="pt-3 flex justify-between">
             <div className="flex gap-3 ">
-              <div className="bg-white w-[50px] h-[50px] flex flex-col justify-center items-center">
+              <div className=" cursor-pointer bg-white w-[50px] h-[50px] flex flex-col justify-center items-center">
                 <div className="mb-1">
                   <Image src={thumbsUp} alt="thumbs-up" />
                 </div>
 
                 <p className="leading-none text-accent text-sm">11</p>
               </div>
-              <div className="bg-white w-[50px] h-[50px] flex flex-col justify-center items-center">
+              <div className="cursor-pointer bg-white w-[50px] h-[50px] flex flex-col justify-center items-center">
                 <div className="mb-0.5">
                   <Image src={thumbsDown} alt="thumbs-down" />
                 </div>
