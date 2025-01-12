@@ -14,7 +14,8 @@ export default function WordDefinition() {
   const [wordDisplay, setWordDisplay] = useState(null);
   const [definitionDisplay, setDefinitionDisplay] = useState(null);
   const [userDisplay, setUserDisplay] = useState(null);
-  console.log("🚀 ~ WordDefinition ~ wordDisplay:", wordDisplay);
+  const [timeDisplay, setTimeDisplay] = useState(null);
+  console.log("🚀 ~ WordDefinition ~ wordDisplay:", word);
 
   useEffect(() => {
     async function fetchWord() {
@@ -24,9 +25,10 @@ export default function WordDefinition() {
           const data = await response.json();
           console.log("🚀 ~ fetchWord ~ data:", data);
 
-          setWordDisplay(data?.word.word);
-          setDefinitionDisplay(data?.word.definition);
-          setUserDisplay(data?.word.username);
+          setWordDisplay(data?.word);
+          setDefinitionDisplay(data?.definition);
+          setUserDisplay(data?.username);
+          setTimeDisplay(data?.formattedDate);
         } catch (error) {
           console.error(error);
         }
@@ -35,9 +37,10 @@ export default function WordDefinition() {
           const response = await fetch(`/api/words`);
           const data = await response.json();
           console.log("🚀 ~ fetchWord ~ data:", data);
-          setWordDisplay(data?.word.word);
-          setDefinitionDisplay(data?.word.definition);
-          setUserDisplay(data?.word.username);
+          setWordDisplay(data?.word);
+          setDefinitionDisplay(data?.definition);
+          setUserDisplay(data?.username);
+          setTimeDisplay(data?.formattedDate);
         } catch (error) {
           console.error(error);
         }
@@ -72,7 +75,7 @@ export default function WordDefinition() {
           </div>
         </div>
         <div className="self-end">
-          <p className="text-xs">Added: Added July 5, 2024</p>
+          <p className="text-xs">Added: {timeDisplay}</p>
         </div>
       </div>
     </div>

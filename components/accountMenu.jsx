@@ -21,6 +21,15 @@ export default function AccountMenu({ userDetails }) {
     }
   };
 
+  const handleMySlangClick = (e) => {
+    e.preventDefault();
+    setIsAccountMenuOpen(false);
+    setTimeout(() => {
+      // delay to prevent flicker
+      router.push("/my-slangs");
+    }, 500);
+  };
+
   const handleLoginClick = (e) => {
     e.preventDefault();
     setIsAccountMenuOpen(false);
@@ -62,15 +71,24 @@ export default function AccountMenu({ userDetails }) {
           ref={accountMenuRef}
           className="absolute right-0 mt-5 bg-white p-3 py-3 border-[#e3e3e3] border-2"
         >
-          <ul>
-            <li className="flex items-center gap-2">
+          <ul className="flex flex-col gap-1">
+            <li className="hover:bg-slate-200 flex items-center gap-2 cursor-pointer ">
               <div className="w-[30px] h-[30px] bg-slate-600 rounded-full"></div>
               <p className="text-sm text-nowrap">
                 {userDetails ? userDetails?.username : "No Account"}
               </p>
             </li>
+            {userDetails && (
+              <li
+                onClick={handleMySlangClick}
+                className="hover:bg-slate-200 flex items-center gap-2 cursor-pointer"
+              >
+                <div className="w-[30px] h-[30px]"></div>
+                <p className="text-sm">My Slangs</p>
+              </li>
+            )}
             {!userDetails ? (
-              <li className="flex items-center gap-2">
+              <li className="hover:bg-slate-200 flex items-center gap-2">
                 <div className="w-[30px] h-[30px]"></div>
                 <div
                   onClick={handleLoginClick}
@@ -80,11 +98,11 @@ export default function AccountMenu({ userDetails }) {
                 </div>
               </li>
             ) : (
-              <li className="flex items-center gap-2">
+              <li className="hover:bg-slate-200  flex items-center gap-2">
                 <div className="w-[30px] h-[30px]"></div>
                 <div
                   onClick={handleLogoutClick}
-                  className="underline text-sm text-accent cursor-pointer"
+                  className=" text-sm text-accent cursor-pointer"
                 >
                   Logout
                 </div>
